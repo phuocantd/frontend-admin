@@ -1,0 +1,16 @@
+body {
+  text-align: center;
+}
+
+.login-form {
+  display: inline-block;
+  padding-top: 100px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
