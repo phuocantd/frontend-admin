@@ -29,7 +29,13 @@ function LayoutPage(props) {
           <Menu.Item key="2">
             <Link to="/admins">
               <Icon type="team" />
-              <span>Admins</span>
+              <span>Manage admins</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <Link to="/tags">
+              <Icon type="team" />
+              <span>Manage Skill</span>
             </Link>
           </Menu.Item>
           <SubMenu
@@ -41,9 +47,9 @@ function LayoutPage(props) {
               </span>
             }
           >
-            <Menu.Item key="3">Tom</Menu.Item>
             <Menu.Item key="4">Bill</Menu.Item>
             <Menu.Item key="5">Alex</Menu.Item>
+            <Menu.Item key="6">Tom</Menu.Item>
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -54,7 +60,7 @@ function LayoutPage(props) {
               </span>
             }
           >
-            <Menu.Item key="6">Team 1</Menu.Item>
+            <Menu.Item key="7">Team 1</Menu.Item>
             <Menu.Item key="8">Team 2</Menu.Item>
           </SubMenu>
           <Menu.Item key="9">

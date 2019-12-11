@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
 import './index.css';
 
 class NormalForm extends React.Component {
@@ -49,9 +48,6 @@ class NormalForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true
           })(<Checkbox>Remember me</Checkbox>)}
-          <Link to="/" className="login-form-forgot">
-            Forgot password
-          </Link>
           <Button
             type="primary"
             htmlType="submit"

@@ -1,7 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
+import { connect } from 'react-redux';
 
+import { addAdmin } from '../../actions/admin';
 import './index.css';
 import CollectionCreateForm from './CollectionCreateForm';
 
@@ -28,7 +30,11 @@ class CollectionsPage extends React.Component {
         return;
       }
 
-      console.log('Received values of form: ', values);
+      // console.log('Received values of form: ', values);
+      const { dispatch } = this.props;
+      const { count } = this.state;
+      dispatch(addAdmin(count, 'admin', values.email, values.name));
+
       form.resetFields();
       this.setState({ visible: false });
     });
@@ -56,4 +62,4 @@ class CollectionsPage extends React.Component {
   }
 }
 
-export default CollectionsPage;
+export default connect()(CollectionsPage);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
-import EditableTable from './EditableTable';
-import AddBtn from './AddBtn';
+import EditableTable from '../../components/EditableTable';
+import AddBtn from '../../components/AddBtn';
 
 function AdminPage() {
   return (

@@ -1,21 +1,41 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Page from './pages';
 import LoginPage from './pages/login';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import { auth } from './api/services/auth';
+import { changeIsLogin } from './actions/auth';
 
-function App() {
+function App({ dispatch }) {
+  useEffect(() => {
+    const token = localStorage.getItem('access-token');
+    if (token) {
+      // dispatch(changeIsLogin(true));
+      auth(token)
+        .then(() => {
+          dispatch(changeIsLogin(true));
+        })
+        .catch(() => {
+          dispatch(changeIsLogin(false));
+        });
+    }
+  });
   return (
     <Router>
       <Switch>
-        <Route exact path="/login">
+        <PublicRoute exact path="/login">
           <LoginPage />
-        </Route>
-        <Route>
+        </PublicRoute>
+        <PrivateRoute>
           <Page />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );
 }
 
-export default App;
+export default connect()(App);

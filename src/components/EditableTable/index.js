@@ -6,7 +6,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Table, Popconfirm, Form } from 'antd';
+import { connect } from 'react-redux';
 
+import { delAdmin } from '../../actions/admin';
 import EditableCell from './EditableCell';
 import './index.css';
 
@@ -25,62 +27,41 @@ class EditableTable extends React.Component {
     super(props);
     this.columns = [
       {
-        title: 'role',
+        title: 'Role',
         dataIndex: 'role'
-      },
-      {
-        title: 'name',
-        dataIndex: 'name',
-        width: '30%',
-        editable: true
       },
       {
         title: 'email',
         dataIndex: 'email'
       },
       {
+        title: 'name',
+        dataIndex: 'name'
+      },
+      {
         title: 'operation',
         dataIndex: 'operation',
         render: (text, record) =>
-          this.state.dataSource.length >= 1 ? (
+          this.props.dataSource.length >= 1 ? (
             <Popconfirm
               title="Sure to delete?"
-              onConfirm={() => this.handleDelete(record.key)}
+              onConfirm={() => this.handleDelete(record._id)}
             >
               <a>Delete</a>
             </Popconfirm>
           ) : null
       }
     ];
-
-    this.state = {
-      dataSource: [],
-      count: 0
-    };
   }
 
-  handleDelete = key => {
-    const dataSource = [...this.state.dataSource];
-    this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
-  };
-
-  handleAdd = () => {
-    const { count, dataSource } = this.state;
-    const newData = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: 32,
-      address: `London, Park Lane no. ${count}`
-    };
-    this.setState({
-      dataSource: [...dataSource, newData],
-      count: count + 1
-    });
+  handleDelete = id => {
+    const { dispatch } = this.props;
+    dispatch(delAdmin(id));
   };
 
   handleSave = row => {
     const newData = [...this.state.dataSource];
-    const index = newData.findIndex(item => row.key === item.key);
+    const index = newData.findIndex(item => row._id === item._id);
     const item = newData[index];
     newData.splice(index, 1, {
       ...item,
@@ -90,7 +71,7 @@ class EditableTable extends React.Component {
   };
 
   render() {
-    const { dataSource } = this.state;
+    const { dataSource } = this.props;
     const components = {
       body: {
         row: EditableFormRow,
@@ -126,4 +107,8 @@ class EditableTable extends React.Component {
   }
 }
 
-export default EditableTable;
+export default connect(state => {
+  return {
+    dataSource: state.admin
+  };
+})(EditableTable);

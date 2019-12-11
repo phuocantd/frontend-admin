@@ -3,7 +3,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createPromise } from 'redux-promise-middleware';
 
-import reducers from '../reducers';
+import reducers from './reducers';
 
 const middleware = applyMiddleware(createPromise(), thunk); // , createLogger());
 const store = createStore(

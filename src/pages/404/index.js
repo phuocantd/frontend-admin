@@ -340,7 +340,7 @@ function ErrorPage() {
                 <text
                   transform="translate(377.037 230.025)"
                   className="st8 st10"
-                  fontSsize="21"
+                  fontSize="21"
                 >
                   404
                 </text>

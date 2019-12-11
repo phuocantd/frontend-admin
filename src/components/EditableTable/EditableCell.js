@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-return-assign */
 import React from 'react';
 import 'antd/dist/antd.css';
