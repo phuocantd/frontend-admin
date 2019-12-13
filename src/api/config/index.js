@@ -17,6 +17,7 @@ const createAdminURL = () => `${DOMAIN}/admins`;
 const getAllAdminsURL = () => `${DOMAIN}/admins`;
 const getSingleAdminURL = id => `${DOMAIN}/admins/${id}`;
 const updateAdminURL = id => `${DOMAIN}/admins/${id}`;
+const deleteAdminURL = id => `${DOMAIN}/admins/${id}`;
 
 // User
 const getAllUsersURL = () => `${DOMAIN}/users`;
@@ -36,6 +37,7 @@ export {
   getAllAdminsURL,
   getSingleAdminURL,
   updateAdminURL,
+  deleteAdminURL,
   authTokenURL,
   getAllUsersURL,
   getSingleUserURL,
