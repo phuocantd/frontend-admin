@@ -6,7 +6,6 @@ import HomePage from './home';
 import ErrorPage from './404';
 import AdminsPage from './admins';
 import TagsPage from './tags';
-import AdminPage from './admin';
 import Logout from './logout';
 
 function Page() {
@@ -23,9 +22,7 @@ function Page() {
         <Route exact path={`${path}tags`}>
           <TagsPage />
         </Route>
-        <Route exact path={`${path}admin/:id`}>
-          <AdminPage />
-        </Route>
+
         <Route exact path={`${path}log-out`}>
           <Logout />
         </Route>

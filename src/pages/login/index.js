@@ -20,6 +20,7 @@ function LoginPage({ dispatch }) {
         }
       })
       .catch(err => {
+        console.log(err);
         dispatch(changeIsLogin(false));
         if (err.response) {
           message.error(err.response.data.error);

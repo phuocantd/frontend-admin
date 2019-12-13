@@ -1,11 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { connect } from 'react-redux';
 
-import { addAdmin } from '../../actions/admin';
 import './index.css';
 import CollectionCreateForm from './CollectionCreateForm';
+import { createAdministrators } from '../../api/services/admin';
+import { addAdmin } from '../../actions/admin';
 
 class CollectionsPage extends React.Component {
   constructor(props) {
@@ -25,15 +26,27 @@ class CollectionsPage extends React.Component {
 
   handleCreate = () => {
     const { form } = this.formRef.props;
-    form.validateFields((err, values) => {
-      if (err) {
+    const { dispatch } = this.props;
+    form.validateFields((error, values) => {
+      if (error) {
         return;
       }
-
-      // console.log('Received values of form: ', values);
-      const { dispatch } = this.props;
-      const { count } = this.state;
-      dispatch(addAdmin(count, 'admin', values.email, values.name));
+      // const { dispatch } = this.props;
+      // dispatch(addAdmin(count, 'admin', values.email, values.name));
+      const token = localStorage.getItem('access-token');
+      createAdministrators(values.email, values.password, values.name, token)
+        .then(res => {
+          message.success('Tạo tài khoản thành công');
+          const { role, _id, email, name } = res.data;
+          dispatch(addAdmin(_id, role, email, name));
+        })
+        .catch(err => {
+          if (err.response) {
+            message.error(err.response.data.error);
+          } else {
+            message.error(err.message);
+          }
+        });
 
       form.resetFields();
       this.setState({ visible: false });
@@ -49,7 +62,7 @@ class CollectionsPage extends React.Component {
     return (
       <div>
         <Button type="primary" onClick={this.showModal}>
-          Add admin
+          Add new admin
         </Button>
         <CollectionCreateForm
           wrappedComponentRef={this.saveFormRef}

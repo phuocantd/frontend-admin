@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -48,10 +48,7 @@ function LayoutPage(props) {
       <Layout>
         <Header style={{ background: '#fff', padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          <div style={{ margin: '16px 0' }} />
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
             {children}
           </div>

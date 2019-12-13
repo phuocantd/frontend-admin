@@ -18,4 +18,10 @@ const putAPI = (url, data = {}, req = {}) =>
     .then(res => Promise.resolve(res.data))
     .catch(err => Promise.reject(err));
 
-export { getAPI, postAPI, putAPI };
+const delAPI = (url, req = {}) =>
+  axios
+    .delete(url, req)
+    .then(res => Promise.resolve(res.data))
+    .catch(err => Promise.reject(err));
+
+export { getAPI, postAPI, putAPI, delAPI };

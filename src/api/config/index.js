@@ -8,19 +8,40 @@ const requestTOKEN = token => {
   };
 };
 
+// Auth
 const loginURL = () => `${DOMAIN}/auth/login`;
-const createAdminURL = () => `${DOMAIN}/admins`;
-const allAdminsURL = () => `${DOMAIN}/admins`;
-const singleAdminURL = id => `${DOMAIN}/admins/${id}`;
-const updateAdminURL = id => `${DOMAIN}/admins/${id}`;
 const authTokenURL = () => `${DOMAIN}/auth/me`;
+
+// Admin
+const createAdminURL = () => `${DOMAIN}/admins`;
+const getAllAdminsURL = () => `${DOMAIN}/admins`;
+const getSingleAdminURL = id => `${DOMAIN}/admins/${id}`;
+const updateAdminURL = id => `${DOMAIN}/admins/${id}`;
+
+// User
+const getAllUsersURL = () => `${DOMAIN}/users`;
+const getSingleUserURL = id => `${DOMAIN}/users/${id}`;
+
+// Tag
+const createTagURL = () => `${DOMAIN}/tags`;
+const getAllTagsURL = () => `${DOMAIN}/tags`;
+const getSingleTagURL = id => `${DOMAIN}/tags/${id}`;
+const updateTagURL = id => `${DOMAIN}/tags/${id}`;
+const deleteTagURL = id => `${DOMAIN}/tags/${id}`;
 
 export {
   requestTOKEN,
   loginURL,
   createAdminURL,
-  allAdminsURL,
-  singleAdminURL,
+  getAllAdminsURL,
+  getSingleAdminURL,
   updateAdminURL,
-  authTokenURL
+  authTokenURL,
+  getAllUsersURL,
+  getSingleUserURL,
+  createTagURL,
+  getAllTagsURL,
+  getSingleTagURL,
+  updateTagURL,
+  deleteTagURL
 };
