@@ -26,7 +26,7 @@ const getSingleTag = (id, token) => {
   return getAPI(url, req);
 };
 
-const updateTag = (id, name, token) => {
+const updateATag = (id, name, token) => {
   const url = updateTagURL(id);
   const req = requestTOKEN(token);
   return putAPI(url, { name }, req);
@@ -38,4 +38,4 @@ const deleteTag = (id, token) => {
   return delAPI(url, req);
 };
 
-export { createTag, getAllTags, getSingleTag, updateTag, deleteTag };
+export { createTag, getAllTags, getSingleTag, updateATag, deleteTag };

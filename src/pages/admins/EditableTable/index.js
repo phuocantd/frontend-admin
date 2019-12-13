@@ -13,11 +13,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import './index.css';
-import { setAllAdmin, updateAdmin } from '../../actions/admin';
+import { setAllAdmin, updateAdmin } from '../../../actions/admin';
 import {
   getAllAdministrators,
   updateAdministrators
-} from '../../api/services/admin';
+} from '../../../api/services/admin';
 
 const EditableContext = React.createContext();
 
@@ -157,7 +157,7 @@ class EditableTable extends React.Component {
     const token = localStorage.getItem('access-token');
     getAllAdministrators(token)
       .then(res => {
-        const arr = res.data.data.map(obj => ({ ...obj, key: obj._id }));
+        const arr = res.data.results.map(obj => ({ ...obj, key: obj._id }));
         dispatch(setAllAdmin(arr));
         this.setState({
           isLoading: false

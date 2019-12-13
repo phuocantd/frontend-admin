@@ -1,14 +1,15 @@
 import React from 'react';
-import { Divider, Button } from 'antd';
+import { Divider } from 'antd';
 
-import ListComponent from '../../components/List';
+import Table from './EditableTable';
+import AddBtn from './AddBtn';
 
 function Tag() {
   return (
     <>
-      <Button>Add Skill</Button>
+      <AddBtn />
       <Divider />
-      <ListComponent />
+      <Table />
     </>
   );
 }

@@ -8,7 +8,7 @@ const setAllTags = arr => {
   return { type: SET_ALL_TAGS, arr };
 };
 
-const updateTags = (id, name) => {
+const updateTag = (id, name) => {
   return { type: UPDATE_TAG, id, name };
 };
 
@@ -16,4 +16,4 @@ const delTag = id => {
   return { type: DEL_TAG, id };
 };
 
-export { addTag, setAllTags, updateTags, delTag };
+export { addTag, setAllTags, updateTag, delTag };

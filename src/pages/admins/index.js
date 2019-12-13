@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Divider } from 'antd';
-import EditableTable from '../../components/EditableTable';
-import AddBtn from '../../components/AddBtn';
+import EditableTable from './EditableTable';
+import AddBtn from './AddBtn';
 
 function AdminPage() {
   useEffect(() => {
