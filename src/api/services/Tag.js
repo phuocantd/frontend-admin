@@ -4,9 +4,9 @@ import {
   getAllTagsURL,
   getSingleTagURL,
   updateTagURL,
-  deleteTagURL
+  lockOrUnlockTagURL
 } from '../config';
-import { getAPI, putAPI, postAPI, delAPI } from '../axios';
+import { getAPI, putAPI, postAPI } from '../axios';
 
 const createTag = (name, token) => {
   const url = createTagURL();
@@ -32,10 +32,10 @@ const updateATag = (id, name, token) => {
   return putAPI(url, { name }, req);
 };
 
-const deleteTag = (id, token) => {
-  const url = deleteTagURL(id);
+const lockOrUnlockTag = (id, isActive, token) => {
+  const url = lockOrUnlockTagURL(id);
   const req = requestTOKEN(token);
-  return delAPI(url, req);
+  return putAPI(url, { isActive }, req);
 };
 
-export { createTag, getAllTags, getSingleTag, updateATag, deleteTag };
+export { createTag, getAllTags, getSingleTag, updateATag, lockOrUnlockTag };

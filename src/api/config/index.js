@@ -28,7 +28,7 @@ const createTagURL = () => `${DOMAIN}/tags`;
 const getAllTagsURL = () => `${DOMAIN}/tags`;
 const getSingleTagURL = id => `${DOMAIN}/tags/${id}`;
 const updateTagURL = id => `${DOMAIN}/tags/${id}`;
-const deleteTagURL = id => `${DOMAIN}/tags/${id}`;
+const lockOrUnlockTagURL = id => `${DOMAIN}/tags/${id}`;
 
 export {
   requestTOKEN,
@@ -45,5 +45,5 @@ export {
   getAllTagsURL,
   getSingleTagURL,
   updateTagURL,
-  deleteTagURL
+  lockOrUnlockTagURL
 };
