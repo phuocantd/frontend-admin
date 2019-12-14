@@ -7,6 +7,7 @@ import ErrorPage from './404';
 import AdminsPage from './admins';
 import TagsPage from './tags';
 import Logout from './logout';
+import UsersPage from './users';
 
 function Page() {
   const { path } = useRouteMatch();
@@ -18,6 +19,9 @@ function Page() {
         </Route>
         <Route exact path={`${path}admins`}>
           <AdminsPage />
+        </Route>
+        <Route exact path={`${path}users`}>
+          <UsersPage />
         </Route>
         <Route exact path={`${path}tags`}>
           <TagsPage />
