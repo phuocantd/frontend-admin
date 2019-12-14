@@ -3,9 +3,10 @@ import {
   createAdminURL,
   getAllAdminsURL,
   getSingleAdminURL,
-  updateAdminURL
+  updateAdminURL,
+  deleteAdminURL
 } from '../config';
-import { postAPI, getAPI, putAPI } from '../axios';
+import { postAPI, getAPI, putAPI, delAPI } from '../axios';
 
 const createAdministrators = (email, password, name, token) => {
   const url = createAdminURL();
@@ -25,15 +26,29 @@ const getSingleAdministrators = (id, token) => {
   return getAPI(url, req);
 };
 
-const updateAdministrators = (id, name, token) => {
+const updateAdministrators = (id, name, email, token) => {
   const url = updateAdminURL(id);
   const req = requestTOKEN(token);
-  return putAPI(url, { name }, req);
+  return putAPI(url, { name, email }, req);
+};
+
+const changePasswordAdministrator = (id, password, token) => {
+  const url = updateAdminURL(id);
+  const req = requestTOKEN(token);
+  return putAPI(url, { password }, req);
+};
+
+const deleteAdministrator = (id, token) => {
+  const url = deleteAdminURL(id);
+  const req = requestTOKEN(token);
+  return delAPI(url, req);
 };
 
 export {
   createAdministrators,
   getAllAdministrators,
   getSingleAdministrators,
-  updateAdministrators
+  updateAdministrators,
+  changePasswordAdministrator,
+  deleteAdministrator
 };

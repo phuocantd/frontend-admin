@@ -17,8 +17,8 @@ const setAllAdmin = arr => {
   return { type: GET_ALL_ADMIN, arr };
 };
 
-const updateAdmin = (id, name) => {
-  return { type: UPDADTE_ADMIN, name, id };
+const updateAdmin = (id, name, email) => {
+  return { type: UPDADTE_ADMIN, name, id, email };
 };
 
 export { addAdmin, delAdmin, setAllAdmin, updateAdmin };

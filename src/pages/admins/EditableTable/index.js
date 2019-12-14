@@ -13,11 +13,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import './index.css';
-import { setAllAdmin, updateAdmin } from '../../../actions/admin';
+import { setAllAdmin, updateAdmin, delAdmin } from '../../../actions/admin';
 import {
   getAllAdministrators,
-  updateAdministrators
+  updateAdministrators,
+  deleteAdministrator
 } from '../../../api/services/admin';
+import ChangePassword from './ChangePassword';
 
 const EditableContext = React.createContext();
 
@@ -129,12 +131,21 @@ class EditableTable extends React.Component {
       },
       {
         title: 'email',
-        dataIndex: 'email'
+        dataIndex: 'email',
+        editable: true
       },
       {
         title: 'name',
         dataIndex: 'name',
         editable: true
+      },
+      {
+        title: 'password',
+        dataIndex: 'password',
+        render: (text, record) =>
+          this.props.dataSource.length >= 1 ? (
+            <ChangePassword idAdmin={record._id} />
+          ) : null
       },
       {
         title: 'operation',
@@ -175,21 +186,36 @@ class EditableTable extends React.Component {
       });
   }
 
+  handleChangePassword = id => {
+    message.success(id);
+  };
+
   handleDelete = id => {
-    // const { dispatch } = this.props;
+    const { dispatch } = this.props;
     // dispatch(delAdmin(id));
-    const { history } = this.props;
-    if (history) history.push(`/admin/${id}`);
+    const token = localStorage.getItem('access-token');
+    deleteAdministrator(id, token)
+      .then(res => {
+        dispatch(delAdmin(id));
+        message.success(`Delete admin ${res.data.name} success`);
+      })
+      .catch(err => {
+        if (err.response) {
+          message.error(err.response.data.error);
+        } else {
+          message.error(err.message);
+        }
+      });
   };
 
   handleSave = row => {
-    const { name, _id } = row;
+    const { name, _id, email } = row;
     const { dispatch } = this.props;
     const token = localStorage.getItem('access-token');
-    updateAdministrators(_id, name, token)
+    updateAdministrators(_id, name, email, token)
       .then(res => {
         if (res.success) {
-          dispatch(updateAdmin(_id, name));
+          dispatch(updateAdmin(_id, name, email));
           message.success('Update success');
         } else {
           message.error('Update fail');
