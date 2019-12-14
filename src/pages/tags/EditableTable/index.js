@@ -13,8 +13,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import './index.css';
-import { setAllTags, updateTag } from '../../../actions/tag';
-import { getAllTags, updateATag } from '../../../api/services/Tag';
+import { setAllTags, updateTag, changIsActiveTag } from '../../../actions/tag';
+import {
+  getAllTags,
+  updateATag,
+  lockOrUnlockTag
+} from '../../../api/services/Tag';
 
 const EditableContext = React.createContext();
 
@@ -135,10 +139,10 @@ class EditableTable extends React.Component {
         render: (text, record) =>
           this.props.dataSource.length >= 1 ? (
             <Popconfirm
-              title={`Sure to ${record.isActive ? 'block' : 'unblock'} tag?`}
-              onConfirm={() => this.handleDelete(record._id)}
+              title="Sure to change active skill?"
+              onConfirm={() => this.handleDelete(record._id, record.isActive)}
             >
-              <a>{record.isActive ? 'Block' : 'UnBlock'}</a>
+              <a>Block/Unblock</a>
             </Popconfirm>
           ) : null
       }
@@ -150,7 +154,7 @@ class EditableTable extends React.Component {
     const token = localStorage.getItem('access-token');
     getAllTags(token)
       .then(res => {
-        const arr = res.data.map(obj => ({
+        const arr = res.data.results.map(obj => ({
           ...obj,
           key: obj._id,
           isActive: obj.isActive.toString()
@@ -172,10 +176,30 @@ class EditableTable extends React.Component {
       });
   }
 
-  handleDelete = id => {
-    // const { dispatch } = this.props;
-    // dispatch(delAdmin(id));
-    message.success(id);
+  handleDelete = (id, isActive) => {
+    const { dispatch } = this.props;
+    const active = isActive !== 'true';
+    const token = localStorage.getItem('access-token');
+    lockOrUnlockTag(id, active, token)
+      .then(res => {
+        dispatch(changIsActiveTag(id, active));
+        if (active) {
+          message.success(`Unlock skill ${res.data.name} success`);
+        } else {
+          message.success(`Lock skill ${res.data.name} success`);
+        }
+      })
+      .catch(err => {
+        if (err.response) {
+          message.error(err.response.data.error);
+        } else {
+          message.error(err.message);
+        }
+        this.setState({
+          isLoading: true
+        });
+      });
+    // message.success({});
   };
 
   handleSave = row => {

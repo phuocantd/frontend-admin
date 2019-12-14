@@ -5,3 +5,5 @@ export const SET_ALL_TAGS = 'SET_ALL_TAGS';
 export const UPDATE_TAG = 'UPDATE_TAG';
 
 export const DEL_TAG = 'DEL_TAG';
+
+export const CHANGE_IS_ACTIVE_TAG = 'CHANGE_IS_ACTIVE_TAG';
