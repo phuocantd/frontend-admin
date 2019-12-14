@@ -24,7 +24,9 @@ const adminsReducer = (state = [], action) => {
       return action.arr;
     case UPDADTE_ADMIN:
       return state.map(i =>
-        i._id === action.id ? { ...i, name: action.name } : i
+        i._id === action.id
+          ? { ...i, name: action.name, email: action.email }
+          : i
       );
     default:
       return state;
