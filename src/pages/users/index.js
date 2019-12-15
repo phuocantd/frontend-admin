@@ -7,11 +7,11 @@ import './index.css';
 import { getAllUsers } from '../../api/services/user';
 import { setAllUsers } from '../../actions/users';
 
-function UserPage({ dispatch, dataSource }) {
+function UserPage({ dispatch, dataSource, token }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('access-token');
+    // const token = localStorage.getItem('access-token');
     getAllUsers(token)
       .then(res => {
         const arr = res.data.results.map(obj => ({
@@ -94,6 +94,7 @@ function UserPage({ dispatch, dataSource }) {
 
 export default connect(state => {
   return {
-    dataSource: state.users
+    dataSource: state.users,
+    token: state.tokenReducer
   };
 })(UserPage);

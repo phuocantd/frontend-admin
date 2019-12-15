@@ -26,14 +26,14 @@ class CollectionsPage extends React.Component {
 
   handleCreate = () => {
     const { form } = this.formRef.props;
-    const { dispatch } = this.props;
+    const { dispatch, token } = this.props;
     form.validateFields((error, values) => {
       if (error) {
         return;
       }
       // const { dispatch } = this.props;
       // dispatch(addAdmin(count, 'admin', values.email, values.name));
-      const token = localStorage.getItem('access-token');
+      // const token = localStorage.getItem('access-token');
       createTag(values.name, token)
         .then(res => {
           message.success('Create skill success');
@@ -75,4 +75,8 @@ class CollectionsPage extends React.Component {
   }
 }
 
-export default connect()(CollectionsPage);
+export default connect(state => {
+  return {
+    token: state.tokenReducer
+  };
+})(CollectionsPage);

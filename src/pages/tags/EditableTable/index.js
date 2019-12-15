@@ -150,8 +150,8 @@ class EditableTable extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    const token = localStorage.getItem('access-token');
+    const { dispatch, token } = this.props;
+    // const token = localStorage.getItem('access-token');
     getAllTags(token)
       .then(res => {
         const arr = res.data.results.map(obj => ({
@@ -177,9 +177,9 @@ class EditableTable extends React.Component {
   }
 
   handleDelete = (id, isActive) => {
-    const { dispatch } = this.props;
+    const { dispatch, token } = this.props;
     const active = isActive !== 'true';
-    const token = localStorage.getItem('access-token');
+    // const token = localStorage.getItem('access-token');
     lockOrUnlockTag(id, active, token)
       .then(res => {
         dispatch(changIsActiveTag(id, active));
@@ -204,8 +204,8 @@ class EditableTable extends React.Component {
 
   handleSave = row => {
     const { name, _id } = row;
-    const { dispatch } = this.props;
-    const token = localStorage.getItem('access-token');
+    const { dispatch, token } = this.props;
+    // const token = localStorage.getItem('access-token');
     updateATag(_id, name, token)
       .then(res => {
         if (res.success) {
@@ -273,6 +273,7 @@ class EditableTable extends React.Component {
 
 export default connect(state => {
   return {
-    dataSource: state.tag
+    dataSource: state.tag,
+    token: state.tokenReducer
   };
 })(withRouter(EditableTable));
