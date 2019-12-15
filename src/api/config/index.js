@@ -22,6 +22,7 @@ const deleteAdminURL = id => `${DOMAIN}/admins/${id}`;
 // User
 const getAllUsersURL = () => `${DOMAIN}/users`;
 const getSingleUserURL = id => `${DOMAIN}/users/${id}`;
+const lockOrUnlockUserURL = id => `${DOMAIN}/users/${id}`;
 
 // Tag
 const createTagURL = () => `${DOMAIN}/tags`;
@@ -41,6 +42,7 @@ export {
   authTokenURL,
   getAllUsersURL,
   getSingleUserURL,
+  lockOrUnlockUserURL,
   createTagURL,
   getAllTagsURL,
   getSingleTagURL,

@@ -1,0 +1,3 @@
+export const SET_ALL_USERS = 'SET_ALL_USERS';
+
+export const LOCK_UNLOCK_USER = 'LOCK_UNLOCK_USER';

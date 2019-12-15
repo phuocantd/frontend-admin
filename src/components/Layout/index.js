@@ -32,12 +32,18 @@ function LayoutPage(props) {
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
+            <Link to="/users">
+              <Icon type="team" />
+              <span>Manage users</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="4">
             <Link to="/tags">
               <Icon type="bulb" />
               <span>Manage Skill</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="4">
+          <Menu.Item key="5">
             <Link to="/log-out">
               <Icon type="logout" />
               <span>Log Out</span>

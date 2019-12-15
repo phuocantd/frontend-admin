@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
-import admin from './admin';
 import { isAuthenticate, tokenReducer } from './auth';
-import user from './user';
+import admins from './admins';
+import users from './users';
 import tag from './tag';
 
 const reducers = combineReducers({
-  admin,
+  admins,
   isAuthenticate,
   tokenReducer,
-  user,
+  users,
   tag
 });
 

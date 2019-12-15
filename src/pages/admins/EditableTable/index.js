@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import './index.css';
-import { setAllAdmin, updateAdmin, delAdmin } from '../../../actions/admin';
+import { setAllAdmin, updateAdmin, delAdmin } from '../../../actions/admins';
 import {
   getAllAdministrators,
   updateAdministrators,
@@ -279,6 +279,6 @@ class EditableTable extends React.Component {
 
 export default connect(state => {
   return {
-    dataSource: state.admin
+    dataSource: state.admins
   };
 })(withRouter(EditableTable));
