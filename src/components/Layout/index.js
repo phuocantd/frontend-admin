@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './index.css';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-function LayoutPage(props) {
+function LayoutPage({ children, nameAccount }) {
   const [collapsed, setCollapsed] = useState(false);
-  const { children } = props;
 
   const onCollapse = () => {
     setCollapsed(!collapsed);
@@ -52,7 +53,9 @@ function LayoutPage(props) {
         </Menu>
       </Sider>
       <Layout>
-        <Header style={{ background: '#fff', padding: 0 }} />
+        <Header style={{ background: '#fff', padding: 0 }}>
+          {nameAccount ? `Hello, ${nameAccount}` : ''}
+        </Header>
         <Content style={{ margin: '0 16px' }}>
           <div style={{ margin: '16px 0' }} />
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
@@ -67,4 +70,8 @@ function LayoutPage(props) {
   );
 }
 
-export default LayoutPage;
+export default connect(state => {
+  return {
+    nameAccount: state.nameAccountReducer
+  };
+})(LayoutPage);
