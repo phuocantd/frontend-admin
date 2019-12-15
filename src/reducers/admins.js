@@ -3,7 +3,7 @@ import {
   DEL_ADMIN,
   GET_ALL_ADMIN,
   UPDADTE_ADMIN
-} from '../const/admin';
+} from '../const/admins';
 
 const adminsReducer = (state = [], action) => {
   switch (action.type) {

@@ -1,5 +1,10 @@
-import { getAllUsersURL, getSingleUserURL, requestTOKEN } from '../config';
-import { getAPI } from '../axios';
+import {
+  getAllUsersURL,
+  getSingleUserURL,
+  requestTOKEN,
+  lockOrUnlockUserURL
+} from '../config';
+import { getAPI, putAPI } from '../axios';
 
 const getAllUsers = token => {
   const url = getAllUsersURL();
@@ -13,4 +18,10 @@ const getSingleUser = (id, token) => {
   return getAPI(url, req);
 };
 
-export { getAllUsers, getSingleUser };
+const lockOrUnlockUserAccount = (id, isActive, token) => {
+  const url = lockOrUnlockUserURL(id);
+  const req = requestTOKEN(token);
+  return putAPI(url, { isActive }, req);
+};
+
+export { getAllUsers, getSingleUser, lockOrUnlockUserAccount };

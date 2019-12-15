@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import './index.css';
 import CollectionCreateForm from './CollectionCreateForm';
 import { createAdministrators } from '../../../api/services/admin';
-import { addAdmin } from '../../../actions/admin';
+import { addAdmin } from '../../../actions/admins';
 
 class CollectionsPage extends React.Component {
   constructor(props) {
