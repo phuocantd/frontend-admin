@@ -8,7 +8,7 @@ import LoginPage from './pages/login';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import { auth } from './api/services/auth';
-import { changeIsLogin } from './actions/auth';
+import { changeIsLogin, changeToken } from './actions/auth';
 
 function App({ dispatch }) {
   useEffect(() => {
@@ -18,6 +18,7 @@ function App({ dispatch }) {
       auth(token)
         .then(() => {
           dispatch(changeIsLogin(true));
+          dispatch(changeToken(token));
         })
         .catch(() => {
           dispatch(changeIsLogin(false));

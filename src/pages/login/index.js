@@ -4,7 +4,7 @@ import { message } from 'antd';
 
 import { login } from '../../api/services/auth';
 import Form from '../../components/Form';
-import { changeIsLogin } from '../../actions/auth';
+import { changeIsLogin, changeToken } from '../../actions/auth';
 
 function LoginPage({ dispatch }) {
   const handleSubmit = values => {
@@ -12,6 +12,7 @@ function LoginPage({ dispatch }) {
     login(username, password)
       .then(res => {
         dispatch(changeIsLogin(true));
+        dispatch(changeToken(res.token));
         if (remember) {
           const { token } = res;
           localStorage.setItem('access-token', token);
@@ -20,7 +21,6 @@ function LoginPage({ dispatch }) {
         }
       })
       .catch(err => {
-        console.log(err);
         dispatch(changeIsLogin(false));
         if (err.response) {
           message.error(err.response.data.error);

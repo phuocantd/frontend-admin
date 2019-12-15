@@ -32,7 +32,8 @@ class CollectionsPage extends React.Component {
       }
       // const { dispatch } = this.props;
       // dispatch(addAdmin(count, 'admin', values.email, values.name));
-      const token = localStorage.getItem('access-token');
+      // const token = localStorage.getItem('access-token');
+      const { token } = this.props;
       changePasswordAdministrator(idAdmin, values.password, token)
         .then(() => {
           message.success('change password successful');
@@ -70,4 +71,8 @@ class CollectionsPage extends React.Component {
   }
 }
 
-export default connect()(CollectionsPage);
+export default connect(state => {
+  return {
+    token: state.tokenReducer
+  };
+})(CollectionsPage);

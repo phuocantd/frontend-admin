@@ -164,8 +164,8 @@ class EditableTable extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    const token = localStorage.getItem('access-token');
+    const { dispatch, token } = this.props;
+    // const token = localStorage.getItem('access-token');
     getAllAdministrators(token)
       .then(res => {
         const arr = res.data.results.map(obj => ({ ...obj, key: obj._id }));
@@ -191,9 +191,9 @@ class EditableTable extends React.Component {
   };
 
   handleDelete = id => {
-    const { dispatch } = this.props;
+    const { dispatch, token } = this.props;
     // dispatch(delAdmin(id));
-    const token = localStorage.getItem('access-token');
+    // const token = localStorage.getItem('access-token');
     deleteAdministrator(id, token)
       .then(res => {
         dispatch(delAdmin(id));
@@ -210,8 +210,8 @@ class EditableTable extends React.Component {
 
   handleSave = row => {
     const { name, _id, email } = row;
-    const { dispatch } = this.props;
-    const token = localStorage.getItem('access-token');
+    const { dispatch, token } = this.props;
+    // const token = localStorage.getItem('access-token');
     updateAdministrators(_id, name, email, token)
       .then(res => {
         if (res.success) {
@@ -279,6 +279,7 @@ class EditableTable extends React.Component {
 
 export default connect(state => {
   return {
-    dataSource: state.admins
+    dataSource: state.admins,
+    token: state.tokenReducer
   };
 })(withRouter(EditableTable));
