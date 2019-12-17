@@ -263,6 +263,7 @@ class EditableTable extends React.Component {
               bordered
               dataSource={dataSource}
               columns={columns}
+              scroll={{ x: 500, y: 330 }}
             />
           </div>
         )}
