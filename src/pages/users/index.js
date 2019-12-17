@@ -42,27 +42,27 @@ function UserPage({ dispatch, dataSource, token }) {
     },
     {
       title: 'Status',
-      width: 80,
+      width: 100,
       dataIndex: 'isActive',
       key: 'isActive'
     },
     {
       title: 'email',
       dataIndex: 'email',
-      key: '1',
-      width: 100
+      key: 'email',
+      width: 150
     },
     {
       title: 'role',
       dataIndex: 'role',
-      key: '2',
-      width: 50
+      key: 'role',
+      width: 100
     },
     {
       title: 'address',
       dataIndex: 'address',
-      key: '3',
-      width: 150
+      key: 'address',
+      width: 300
     },
     {
       title: 'More info',
@@ -80,7 +80,7 @@ function UserPage({ dispatch, dataSource, token }) {
         <Table
           columns={columns}
           dataSource={dataSource}
-          scroll={{ x: 0, y: 330 }}
+          scroll={{ x: 900, y: 330 }}
         />
       )}
     </div>
