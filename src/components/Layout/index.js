@@ -10,6 +10,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 function LayoutPage({ children, nameAccount }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [width, setWidth] = useState();
 
   const onCollapse = () => {
     setCollapsed(!collapsed);
@@ -17,7 +18,20 @@ function LayoutPage({ children, nameAccount }) {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={() => onCollapse()}>
+      <Sider
+        breakpoint="xs"
+        collapsedWidth={width}
+        onBreakpoint={broken => {
+          if (broken) {
+            setWidth(0);
+          } else {
+            setWidth(80);
+          }
+        }}
+        collapsible
+        collapsed={collapsed}
+        onCollapse={() => onCollapse()}
+      >
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
