@@ -1,9 +1,9 @@
+import { requestTOKEN } from '../config';
 import {
   getAllUsersURL,
   getSingleUserURL,
-  requestTOKEN,
   lockOrUnlockUserURL
-} from '../config';
+} from '../config/user';
 import { getAPI, putAPI } from '../axios';
 
 const getAllUsers = token => {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import './index.css';
 import CollectionCreateForm from './CollectionCreateForm';
-import { createSpecialization } from '../../../api/services/Specialization';
+import { createSpecialization } from '../../../api/services/specialization';
 import { addSpecialization } from '../../../actions/specializations';
 
 class CollectionsPage extends React.Component {

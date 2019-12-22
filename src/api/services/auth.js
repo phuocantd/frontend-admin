@@ -1,4 +1,5 @@
-import { requestTOKEN, loginURL, authTokenURL } from '../config';
+import { requestTOKEN } from '../config';
+import { loginURL, authTokenURL } from '../config/auth';
 import { postAPI } from '../axios';
 
 const login = (email, password) => {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import './index.css';
 import CollectionCreateForm from './CollectionCreateForm';
-import { createTag } from '../../../api/services/Tag';
+import { createTag } from '../../../api/services/tag';
 import { addTag } from '../../../actions/tag';
 
 class CollectionsPage extends React.Component {

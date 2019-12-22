@@ -18,7 +18,7 @@ import {
   getAllTags,
   updateATag,
   lockOrUnlockTag
-} from '../../../api/services/Tag';
+} from '../../../api/services/tag';
 
 const EditableContext = React.createContext();
 
