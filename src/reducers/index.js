@@ -3,6 +3,7 @@ import { isAuthenticate, tokenReducer, nameAccountReducer } from './auth';
 import admins from './admins';
 import users from './users';
 import tag from './tag';
+import Specialization from './specializations';
 
 const reducers = combineReducers({
   admins,
@@ -10,7 +11,8 @@ const reducers = combineReducers({
   nameAccountReducer,
   tokenReducer,
   users,
-  tag
+  tag,
+  Specialization
 });
 
 export default reducers;
