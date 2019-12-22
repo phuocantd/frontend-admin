@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import { Table, message, Skeleton, Button } from 'antd';
+import { Table, message, Skeleton, Button, Popconfirm } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -90,9 +90,12 @@ function UserPage({ dispatch, dataSource, token }) {
       dataIndex: 'lock',
       width: 200,
       render: (text, record) => (
-        <Button onClick={() => handleLock(record._id, record.isActive)}>
-          Lock/Unlock
-        </Button>
+        <Popconfirm
+          title="Sure to change active user?"
+          onConfirm={() => handleLock(record._id, record.isActive)}
+        >
+          <Button>Lock/Unlock</Button>
+        </Popconfirm>
       )
     },
     {
