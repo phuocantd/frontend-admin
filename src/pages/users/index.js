@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import { Table, message, Skeleton } from 'antd';
+import { Table, message, Skeleton, Button } from 'antd';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './index.css';
-import { getAllUsers } from '../../api/services/user';
-import { setAllUsers } from '../../actions/users';
+import { getAllUsers, lockOrUnlockUserAccount } from '../../api/services/user';
+import { setAllUsers, lockOrUnlockUser } from '../../actions/users';
 
 function UserPage({ dispatch, dataSource, token }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +32,27 @@ function UserPage({ dispatch, dataSource, token }) {
         setIsLoading(true);
       });
   });
+
+  const handleLock = (id, isActive) => {
+    const active = isActive !== 'true';
+
+    lockOrUnlockUserAccount(id, active, token)
+      .then(res => {
+        dispatch(lockOrUnlockUser(id, active));
+        if (active) {
+          message.success(`Unlock user ${res.data.name} success`);
+        } else {
+          message.success(`Lock user ${res.data.name} success`);
+        }
+      })
+      .catch(err => {
+        if (err.response) {
+          message.error(err.response.data.error);
+        } else {
+          message.error(err.message);
+        }
+      });
+  };
 
   const columns = [
     {
@@ -63,6 +84,16 @@ function UserPage({ dispatch, dataSource, token }) {
       dataIndex: 'address',
       key: 'address',
       width: 300
+    },
+    {
+      title: 'Lock/Unlock',
+      dataIndex: 'lock',
+      width: 200,
+      render: (text, record) => (
+        <Button onClick={() => handleLock(record._id, record.isActive)}>
+          Lock/Unlock
+        </Button>
+      )
     },
     {
       title: 'More info',
