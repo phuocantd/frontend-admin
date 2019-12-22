@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import { Table, Button, message, Skeleton } from 'antd';
+import { Table, message, Skeleton } from 'antd';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './index.css';
 import { getAllUsers } from '../../api/services/user';
@@ -31,10 +32,6 @@ function UserPage({ dispatch, dataSource, token }) {
         setIsLoading(true);
       });
   });
-
-  const handleClick = id => {
-    message.success(id);
-  };
 
   const columns = [
     {
@@ -70,10 +67,8 @@ function UserPage({ dispatch, dataSource, token }) {
     {
       title: 'More info',
       key: 'operation',
-      width: 150,
-      render: (text, record) => (
-        <Button onClick={() => handleClick(record._id)}>More info</Button>
-      )
+      width: 100,
+      render: (text, record) => <Link to={`user/${record._id}`}>More info</Link>
     }
   ];
 

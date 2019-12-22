@@ -2,7 +2,7 @@ import {
   ADD_ADMIN,
   DEL_ADMIN,
   GET_ALL_ADMIN,
-  UPDADTE_ADMIN
+  UPDATE_ADMIN
 } from '../const/admins';
 
 const addAdmin = (id, role, email, name) => {
@@ -18,7 +18,7 @@ const setAllAdmin = arr => {
 };
 
 const updateAdmin = (id, name, email) => {
-  return { type: UPDADTE_ADMIN, name, id, email };
+  return { type: UPDATE_ADMIN, name, id, email };
 };
 
 export { addAdmin, delAdmin, setAllAdmin, updateAdmin };

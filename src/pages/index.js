@@ -8,6 +8,7 @@ import AdminsPage from './admins';
 import TagsPage from './tags';
 import Logout from './logout';
 import UsersPage from './users';
+import UserPage from './user';
 
 function Page() {
   const { path } = useRouteMatch();
@@ -23,10 +24,12 @@ function Page() {
         <Route exact path={`${path}users`}>
           <UsersPage />
         </Route>
+        <Route path={`${path}user/:id`}>
+          <UserPage />
+        </Route>
         <Route exact path={`${path}tags`}>
           <TagsPage />
         </Route>
-
         <Route exact path={`${path}log-out`}>
           <Logout />
         </Route>

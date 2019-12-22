@@ -2,7 +2,7 @@ import {
   ADD_ADMIN,
   DEL_ADMIN,
   GET_ALL_ADMIN,
-  UPDADTE_ADMIN
+  UPDATE_ADMIN
 } from '../const/admins';
 
 const adminsReducer = (state = [], action) => {
@@ -22,7 +22,7 @@ const adminsReducer = (state = [], action) => {
       return state.filter(item => item._id !== action.id);
     case GET_ALL_ADMIN:
       return action.arr;
-    case UPDADTE_ADMIN:
+    case UPDATE_ADMIN:
       return state.map(i =>
         i._id === action.id
           ? { ...i, name: action.name, email: action.email }
