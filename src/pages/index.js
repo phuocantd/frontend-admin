@@ -9,6 +9,7 @@ import TagsPage from './tags';
 import Logout from './logout';
 import UsersPage from './users';
 import UserPage from './user';
+import SpecializationsPage from './specializations';
 
 function Page() {
   const { path } = useRouteMatch();
@@ -29,6 +30,9 @@ function Page() {
         </Route>
         <Route exact path={`${path}tags`}>
           <TagsPage />
+        </Route>
+        <Route exact path={`${path}specializations`}>
+          <SpecializationsPage />
         </Route>
         <Route exact path={`${path}log-out`}>
           <Logout />

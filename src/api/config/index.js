@@ -1,6 +1,6 @@
-const DOMAIN = `https://zapi-admin.herokuapp.com/api`;
+export const DOMAIN = `https://zapi-admin.herokuapp.com/api`;
 
-const requestTOKEN = token => {
+export const requestTOKEN = token => {
   return {
     headers: {
       Authorization: `Bearer ${token}`
@@ -9,43 +9,33 @@ const requestTOKEN = token => {
 };
 
 // Auth
-const loginURL = () => `${DOMAIN}/auth/login`;
-const authTokenURL = () => `${DOMAIN}/auth/me`;
+export const loginURL = () => `${DOMAIN}/auth/login`;
+export const authTokenURL = () => `${DOMAIN}/auth/me`;
 
 // Admin
-const createAdminURL = () => `${DOMAIN}/admins`;
-const getAllAdminsURL = () => `${DOMAIN}/admins`;
-const getSingleAdminURL = id => `${DOMAIN}/admins/${id}`;
-const updateAdminURL = id => `${DOMAIN}/admins/${id}`;
-const deleteAdminURL = id => `${DOMAIN}/admins/${id}`;
+export const createAdminURL = () => `${DOMAIN}/admins`;
+export const getAllAdminsURL = () => `${DOMAIN}/admins`;
+export const getSingleAdminURL = id => `${DOMAIN}/admins/${id}`;
+export const updateAdminURL = id => `${DOMAIN}/admins/${id}`;
+export const deleteAdminURL = id => `${DOMAIN}/admins/${id}`;
 
 // User
-const getAllUsersURL = () => `${DOMAIN}/users`;
-const getSingleUserURL = id => `${DOMAIN}/users/${id}`;
-const lockOrUnlockUserURL = id => `${DOMAIN}/users/${id}`;
+export const getAllUsersURL = () => `${DOMAIN}/users`;
+export const getSingleUserURL = id => `${DOMAIN}/users/${id}`;
+export const lockOrUnlockUserURL = id => `${DOMAIN}/users/${id}`;
 
 // Tag
-const createTagURL = () => `${DOMAIN}/tags`;
-const getAllTagsURL = () => `${DOMAIN}/tags`;
-const getSingleTagURL = id => `${DOMAIN}/tags/${id}`;
-const updateTagURL = id => `${DOMAIN}/tags/${id}`;
-const lockOrUnlockTagURL = id => `${DOMAIN}/tags/${id}`;
+export const createTagURL = () => `${DOMAIN}/tags`;
+export const getAllTagsURL = () => `${DOMAIN}/tags`;
+export const getSingleTagURL = id => `${DOMAIN}/tags/${id}`;
+export const updateTagURL = id => `${DOMAIN}/tags/${id}`;
+export const lockOrUnlockTagURL = id => `${DOMAIN}/tags/${id}`;
 
-export {
-  requestTOKEN,
-  loginURL,
-  createAdminURL,
-  getAllAdminsURL,
-  getSingleAdminURL,
-  updateAdminURL,
-  deleteAdminURL,
-  authTokenURL,
-  getAllUsersURL,
-  getSingleUserURL,
-  lockOrUnlockUserURL,
-  createTagURL,
-  getAllTagsURL,
-  getSingleTagURL,
-  updateTagURL,
-  lockOrUnlockTagURL
-};
+// Specialization
+export const createSpecializationURL = () => `${DOMAIN}/specializations`;
+export const getAllSpecializationsURL = () => `${DOMAIN}/specializations`;
+export const getSingleSpecializationURL = id =>
+  `${DOMAIN}/specializations/${id}`;
+export const updateSpecializationURL = id => `${DOMAIN}/specializations/${id}`;
+export const lockOrUnlockSpecializationURL = id =>
+  `${DOMAIN}/specializations/${id}`;
