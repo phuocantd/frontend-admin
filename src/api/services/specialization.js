@@ -1,11 +1,11 @@
+import { requestTOKEN } from '../config';
 import {
-  requestTOKEN,
   createSpecializationURL,
   getAllSpecializationsURL,
   getSingleSpecializationURL,
   updateSpecializationURL,
   lockOrUnlockSpecializationURL
-} from '../config';
+} from '../config/specialization';
 import { getAPI, putAPI, postAPI } from '../axios';
 
 export const createSpecialization = (name, token) => {

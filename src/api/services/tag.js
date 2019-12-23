@@ -1,11 +1,11 @@
+import { requestTOKEN } from '../config';
 import {
-  requestTOKEN,
   createTagURL,
   getAllTagsURL,
   getSingleTagURL,
   updateTagURL,
   lockOrUnlockTagURL
-} from '../config';
+} from '../config/tag';
 import { getAPI, putAPI, postAPI } from '../axios';
 
 const createTag = (name, token) => {

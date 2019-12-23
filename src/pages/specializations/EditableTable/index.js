@@ -22,7 +22,7 @@ import {
   getAllSpecializations,
   updateASpecialization,
   lockOrUnlockSpecialization
-} from '../../../api/services/Specialization';
+} from '../../../api/services/specialization';
 
 const EditableContext = React.createContext();
 

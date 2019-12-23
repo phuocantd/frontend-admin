@@ -1,11 +1,11 @@
+import { requestTOKEN } from '../config';
 import {
-  requestTOKEN,
   createAdminURL,
   getAllAdminsURL,
   getSingleAdminURL,
   updateAdminURL,
   deleteAdminURL
-} from '../config';
+} from '../config/admin';
 import { postAPI, getAPI, putAPI, delAPI } from '../axios';
 
 const createAdministrators = (email, password, name, token) => {
