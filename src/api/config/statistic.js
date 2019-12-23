@@ -1,7 +1,7 @@
 import { DOMAIN } from './index';
 
-export const getStatisticByPeriod = period =>
+export const getStatisticByPeriodURL = period =>
   `${DOMAIN}/statistics?period=${period}`;
 
-export const getStatisticByDMY = (period, month, year) =>
+export const getStatisticByDMYURL = (period, month, year) =>
   `${DOMAIN}/period=${period}&month=${month}&year=${year}`;
