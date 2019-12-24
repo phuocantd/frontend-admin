@@ -10,6 +10,7 @@ import Logout from './logout';
 import UsersPage from './users';
 import UserPage from './user';
 import SpecializationsPage from './specializations';
+import ContractsPage from './contracts';
 
 function Page() {
   const { path } = useRouteMatch();
@@ -33,6 +34,9 @@ function Page() {
         </Route>
         <Route exact path={`${path}specializations`}>
           <SpecializationsPage />
+        </Route>
+        <Route exact path={`${path}constracts`}>
+          <ContractsPage />
         </Route>
         <Route exact path={`${path}log-out`}>
           <Logout />
