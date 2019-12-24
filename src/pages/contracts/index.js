@@ -9,13 +9,13 @@ import {
   updateStatusContract
 } from '../../api/services/contract';
 import {
-  setAllConstracts,
-  updateStatusConstracts
+  setAllContracts,
+  updateStatusContracts
 } from '../../actions/contracts';
 
 const { Option } = Select;
 
-function ConstractPage({ token, dispatch, data }) {
+function ContractPage({ token, dispatch, data }) {
   const [loadding, setLoading] = useState(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function ConstractPage({ token, dispatch, data }) {
             status: i.status
           };
         });
-        dispatch(setAllConstracts(arr));
+        dispatch(setAllContracts(arr));
         setLoading(true);
       })
       .catch(err => {
@@ -47,7 +47,7 @@ function ConstractPage({ token, dispatch, data }) {
   const handleChange = (value, id) => {
     updateStatusContract(token, id, value)
       .then(() => {
-        dispatch(updateStatusConstracts(id, value));
+        dispatch(updateStatusContracts(id, value));
         message.success('Update status success');
       })
       .catch(err => {
@@ -123,4 +123,4 @@ export default connect(state => {
     token: state.tokenReducer,
     data: state.contracts
   };
-})(ConstractPage);
+})(ContractPage);
