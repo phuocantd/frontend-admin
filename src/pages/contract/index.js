@@ -41,7 +41,7 @@ function Contract({ token }) {
         <div>
           <p style={pStyle}>{data.title}</p>
           <Row>
-            <Col xs={24} md={12}>
+            <Col xs={24} md={9}>
               <Avatar
                 size={225}
                 src={data.tutor.userInfo.avatar}
@@ -63,7 +63,25 @@ function Contract({ token }) {
                 <p>More info tutor</p>
               </Link>
             </Col>
-            <Col xs={24} md={12}>
+            <Col
+              xs={24}
+              md={6}
+              style={{ marginTop: 75, background: 'aqua', paddingTop: 10 }}
+            >
+              <Col xs={24} md={24}>
+                <DescriptionItem title="rentHours" content={data.rentHours} />
+              </Col>
+              <Col xs={24} md={24}>
+                <DescriptionItem title="status" content={data.status} />
+              </Col>
+              <Col xs={24} md={24}>
+                <DescriptionItem
+                  title="contractAmount"
+                  content={data.contractAmount}
+                />
+              </Col>
+            </Col>
+            <Col xs={24} md={9}>
               <Avatar
                 size={225}
                 src={data.student.userInfo.avatar}
@@ -89,21 +107,6 @@ function Contract({ token }) {
           <Divider />
           <Row>
             <DescriptionItem title="Description" content={data.description} />
-          </Row>
-          <Divider />
-          <Row>
-            <Col xs={24} md={12}>
-              <DescriptionItem title="rentHours" content={data.rentHours} />
-            </Col>
-            <Col xs={24} md={12}>
-              <DescriptionItem title="status" content={data.status} />
-            </Col>
-            <Col xs={24} md={12}>
-              <DescriptionItem
-                title="contractAmount"
-                content={data.contractAmount}
-              />
-            </Col>
           </Row>
         </div>
       )}
