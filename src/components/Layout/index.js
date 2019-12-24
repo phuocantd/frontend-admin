@@ -65,6 +65,12 @@ function LayoutPage({ children, nameAccount }) {
             </Link>
           </Menu.Item>
           <Menu.Item key="6">
+            <Link to="/contracts">
+              <Icon type="logout" />
+              <span>Manage contracts</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="7">
             <Link to="/log-out">
               <Icon type="logout" />
               <span>Log Out</span>
