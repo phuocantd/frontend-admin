@@ -4,6 +4,7 @@ import admins from './admins';
 import users from './users';
 import tag from './tag';
 import specialization from './specializations';
+import constracts from './constracts';
 
 const reducers = combineReducers({
   admins,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   tokenReducer,
   users,
   tag,
-  specialization
+  specialization,
+  constracts
 });
 
 export default reducers;

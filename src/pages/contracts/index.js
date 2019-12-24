@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const index = () => {
-  useEffect(() => {
-    // console.log('first');
-  }, []);
   return <div>constract</div>;
 };
 
