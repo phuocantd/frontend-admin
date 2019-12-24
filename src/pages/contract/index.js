@@ -66,7 +66,12 @@ function Contract({ token }) {
             <Col
               xs={24}
               md={6}
-              style={{ marginTop: 75, background: 'aqua', paddingTop: 10 }}
+              style={{
+                marginTop: 75,
+                marginBottom: 75,
+                background: 'aqua',
+                paddingTop: 10
+              }}
             >
               <Col xs={24} md={24}>
                 <DescriptionItem title="rentHours" content={data.rentHours} />
