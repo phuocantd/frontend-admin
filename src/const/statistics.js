@@ -1,0 +1,1 @@
+export const SET_ALL_STATISTIC = 'SET_ALL_STATISTIC';

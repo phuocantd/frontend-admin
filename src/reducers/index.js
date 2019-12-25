@@ -6,6 +6,7 @@ import tag from './tag';
 import specialization from './specializations';
 import contracts from './contracts';
 import complaints from './complaints';
+import statistics from './statistics';
 
 const reducers = combineReducers({
   admins,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   tag,
   specialization,
   contracts,
-  complaints
+  complaints,
+  statistics
 });
 
 export default reducers;
