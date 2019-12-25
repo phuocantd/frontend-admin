@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Table, message, Select } from 'antd';
+import { Table, message, Select, Skeleton } from 'antd';
 
 import {
   getAllComplaint,
@@ -16,6 +16,8 @@ import {
 const { Option } = Select;
 
 function Complaints({ data, token, dispatch }) {
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     getAllComplaint(token || localStorage.getItem('access-token'))
       .then(res => {
@@ -29,6 +31,7 @@ function Complaints({ data, token, dispatch }) {
           };
         });
         dispatch(setAllComplaints(arr));
+        setLoading(true);
       })
       .catch(err => {
         if (err.response) {
@@ -92,14 +95,18 @@ function Complaints({ data, token, dispatch }) {
 
   return (
     <div>
-      <Table
-        columns={columns}
-        expandedRowRender={record => (
-          <p style={{ margin: 0 }}>{`Description: ${record.description}`}</p>
-        )}
-        dataSource={data}
-        scroll={{ x: 900, y: 330 }}
-      />
+      {loading ? (
+        <Table
+          columns={columns}
+          expandedRowRender={record => (
+            <p style={{ margin: 0 }}>{`Description: ${record.description}`}</p>
+          )}
+          dataSource={data}
+          scroll={{ x: 900, y: 330 }}
+        />
+      ) : (
+        <Skeleton />
+      )}
     </div>
   );
 }
