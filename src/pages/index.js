@@ -12,6 +12,7 @@ import UserPage from './user';
 import SpecializationsPage from './specializations';
 import ContractsPage from './contracts';
 import ContractPage from './contract';
+import ComplaintsPage from './complaints';
 
 function Page() {
   const { path } = useRouteMatch();
@@ -41,6 +42,9 @@ function Page() {
         </Route>
         <Route path={`${path}contract/:id`}>
           <ContractPage />
+        </Route>
+        <Route exact path={`${path}complaints`}>
+          <ComplaintsPage />
         </Route>
         <Route exact path={`${path}log-out`}>
           <Logout />
