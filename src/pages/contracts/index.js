@@ -42,7 +42,7 @@ function ContractPage({ token, dispatch, data }) {
           message.error(err.message);
         }
       });
-  }, [token]);
+  }, [token, dispatch]);
 
   const handleChange = (value, id) => {
     updateStatusContract(token, id, value)
@@ -85,6 +85,9 @@ function ContractPage({ token, dispatch, data }) {
       dataIndex: 'status',
       render: (text, record) => (
         <Select
+          disabled={
+            record.status === 'Completed' || record.status === 'Canceled'
+          }
           defaultValue={record.status}
           style={{ width: 120 }}
           value={record.status}
