@@ -83,6 +83,25 @@ function ContractPage({ token, dispatch, data }) {
     {
       title: 'status',
       dataIndex: 'status',
+      filters: [
+        {
+          text: 'Cancel',
+          value: 'Cancel'
+        },
+        {
+          text: 'Completed',
+          value: 'Completed'
+        },
+        {
+          text: 'Requesting',
+          value: 'Requesting'
+        },
+        {
+          text: 'Happening',
+          value: 'Happening'
+        }
+      ],
+      onFilter: (value, record) => record.status.indexOf(value) === 0,
       render: (text, record) => (
         <Select
           disabled={
@@ -112,6 +131,7 @@ function ContractPage({ token, dispatch, data }) {
         <Skeleton />
       ) : (
         <Table
+          bordered
           columns={columns}
           dataSource={data}
           scroll={{ x: 900, y: 330 }}
