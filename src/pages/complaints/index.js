@@ -40,7 +40,7 @@ function Complaints({ data, token, dispatch }) {
           message.error(err.message);
         }
       });
-  }, [token]);
+  }, [token, dispatch]);
 
   const handleChange = (value, id) => {
     updateStatusComplaint(token, id, value)
@@ -73,6 +73,25 @@ function Complaints({ data, token, dispatch }) {
       dataIndex: 'status',
       key: 'status',
       width: 200,
+      filters: [
+        {
+          text: 'Cancel',
+          value: 'Cancel'
+        },
+        {
+          text: 'Completed',
+          value: 'Completed'
+        },
+        {
+          text: 'Requesting',
+          value: 'Requesting'
+        },
+        {
+          text: 'Happening',
+          value: 'Happening'
+        }
+      ],
+      onFilter: (value, record) => record.status.indexOf(value) === 0,
       render: (text, record) => (
         <Select
           defaultValue={record.status}
