@@ -131,6 +131,7 @@ function ContractPage({ token, dispatch, data }) {
         <Skeleton />
       ) : (
         <Table
+          bordered
           columns={columns}
           dataSource={data}
           scroll={{ x: 900, y: 330 }}

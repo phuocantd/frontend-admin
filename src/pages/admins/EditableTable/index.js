@@ -166,7 +166,7 @@ class EditableTable extends React.Component {
   componentDidMount() {
     const { dispatch, token } = this.props;
     // const token = localStorage.getItem('access-token');
-    getAllAdministrators(token)
+    getAllAdministrators(token || localStorage.getItem('access-token'))
       .then(res => {
         const arr = res.data.results.map(obj => ({ ...obj, key: obj._id }));
         dispatch(setAllAdmin(arr));

@@ -116,6 +116,7 @@ function Complaints({ data, token, dispatch }) {
     <div>
       {loading ? (
         <Table
+          bordered
           columns={columns}
           expandedRowRender={record => (
             <p style={{ margin: 0 }}>{`Description: ${record.description}`}</p>

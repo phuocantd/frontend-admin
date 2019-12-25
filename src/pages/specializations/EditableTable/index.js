@@ -135,7 +135,18 @@ class EditableTable extends React.Component {
       },
       {
         title: 'isActive',
-        dataIndex: 'isActive'
+        dataIndex: 'isActive',
+        filters: [
+          {
+            text: 'Active',
+            value: true
+          },
+          {
+            text: 'No active',
+            value: false
+          }
+        ],
+        onFilter: (value, record) => record.isActive.indexOf(value) === 0
       },
       {
         title: 'operation',

@@ -131,7 +131,18 @@ class EditableTable extends React.Component {
       },
       {
         title: 'isActive',
-        dataIndex: 'isActive'
+        dataIndex: 'isActive',
+        filters: [
+          {
+            text: 'Active',
+            value: true
+          },
+          {
+            text: 'No active',
+            value: false
+          }
+        ],
+        onFilter: (value, record) => record.isActive.indexOf(value) === 0
       },
       {
         title: 'operation',
@@ -152,7 +163,7 @@ class EditableTable extends React.Component {
   componentDidMount() {
     const { dispatch, token } = this.props;
     // const token = localStorage.getItem('access-token');
-    getAllTags(token)
+    getAllTags(token || localStorage.getItem('access-token'))
       .then(res => {
         const arr = res.data.results.map(obj => ({
           ...obj,

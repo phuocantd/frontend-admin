@@ -13,7 +13,7 @@ function UserPage({ dispatch, dataSource, token }) {
 
   useEffect(() => {
     // const token = localStorage.getItem('access-token');
-    getAllUsers(token)
+    getAllUsers(token || localStorage.getItem('access-token'))
       .then(res => {
         const arr = res.data.results.map(obj => ({
           ...obj,
@@ -65,7 +65,18 @@ function UserPage({ dispatch, dataSource, token }) {
       title: 'Status',
       width: 100,
       dataIndex: 'isActive',
-      key: 'isActive'
+      key: 'isActive',
+      filters: [
+        {
+          text: 'Lock',
+          value: false
+        },
+        {
+          text: 'No lock',
+          value: true
+        }
+      ],
+      onFilter: (value, record) => record.isActive.indexOf(value) === 0
     },
     {
       title: 'email',
@@ -77,7 +88,18 @@ function UserPage({ dispatch, dataSource, token }) {
       title: 'role',
       dataIndex: 'role',
       key: 'role',
-      width: 100
+      width: 100,
+      filters: [
+        {
+          text: 'Tutor',
+          value: 'tutor'
+        },
+        {
+          text: 'Student',
+          value: 'student'
+        }
+      ],
+      onFilter: (value, record) => record.role.indexOf(value) === 0
     },
     {
       title: 'address',
@@ -112,6 +134,7 @@ function UserPage({ dispatch, dataSource, token }) {
         <Skeleton />
       ) : (
         <Table
+          bordered
           columns={columns}
           dataSource={dataSource}
           scroll={{ x: 900, y: 330 }}
