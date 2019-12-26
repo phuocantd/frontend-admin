@@ -49,22 +49,22 @@ function Statistic({ token, dispatch }) {
   }, [token, dispatch, period, month, year]);
 
   const handleShow = () => {
-    setLoading(false);
-    getStatisticByDMY(token, period, month, year)
-      .then(res => {
-        const arr = res.data.map(i => {
-          return { genre: convertTime(period, i._id), sold: i.total };
-        });
-        dispatch(setAllStatistics(arr));
-        setLoading(true);
-      })
-      .catch(err => {
-        if (err.response) {
-          message.error(err.response.data.error);
-        } else {
-          message.error(err.message);
-        }
-      });
+    // setLoading(false);
+    // getStatisticByDMY(token, period, month, year)
+    //   .then(res => {
+    //     const arr = res.data.map(i => {
+    //       return { genre: convertTime(period, i._id), sold: i.total };
+    //     });
+    //     dispatch(setAllStatistics(arr));
+    //     setLoading(true);
+    //   })
+    //   .catch(err => {
+    //     if (err.response) {
+    //       message.error(err.response.data.error);
+    //     } else {
+    //       message.error(err.message);
+    //     }
+    //   });
   };
 
   return (
@@ -84,23 +84,22 @@ function Statistic({ token, dispatch }) {
           </Select>
         </Col>
         <Col xs={24} md={8}>
-          {period === 'day' ? (
-            <Select
-              defaultValue={new Date().getMonth() + 1}
-              style={{ width: 150 }}
-              onChange={value => setMonth(value)}
-            >
-              {Array(12)
-                .fill(null)
-                .map((i, idx) => {
-                  return (
-                    <Option value={idx + 1} key={String(idx)}>
-                      {idx + 1}
-                    </Option>
-                  );
-                })}
-            </Select>
-          ) : null}
+          <Select
+            defaultValue={new Date().getMonth() + 1}
+            style={{ width: 150 }}
+            onChange={value => setMonth(value)}
+            disabled={period !== 'day'}
+          >
+            {Array(12)
+              .fill(null)
+              .map((i, idx) => {
+                return (
+                  <Option value={idx + 1} key={String(idx)}>
+                    {idx + 1}
+                  </Option>
+                );
+              })}
+          </Select>
         </Col>
         <Col xs={24} md={8}>
           <Select
@@ -121,7 +120,7 @@ function Statistic({ token, dispatch }) {
         </Col>
       </Row>
       <Row className="chart-btn">
-        <Button onClick={() => handleShow()}>Show</Button>
+        {false && <Button onClick={() => handleShow()}>Show</Button>}
       </Row>
       <Row className="chart-tab">
         {loading ? (

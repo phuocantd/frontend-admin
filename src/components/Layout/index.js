@@ -42,44 +42,50 @@ function LayoutPage({ children, nameAccount }) {
           </Menu.Item>
           <Menu.Item key="2">
             <Link to="/admins">
-              <Icon type="team" />
+              <Icon type="table" />
               <span>Manage admins</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/users">
-              <Icon type="team" />
+              <Icon type="table" />
               <span>Manage users</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="4">
             <Link to="/tags">
-              <Icon type="bulb" />
+              <Icon type="table" />
               <span>Manage Skill</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="5">
             <Link to="/specializations">
-              <Icon type="bulb" />
+              <Icon type="table" />
               <span>Manage specializations</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="6">
             <Link to="/contracts">
-              <Icon type="logout" />
+              <Icon type="table" />
               <span>Manage contracts</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="7">
             <Link to="/complaints">
-              <Icon type="logout" />
+              <Icon type="table" />
               <span>Manage complaints</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="8">
             <Link to="/statistics">
-              <Icon type="logout" />
+              <Icon type="bar-chart" />
               <span>Statistics</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="9">
+            <Link to="/tops">
+              <Icon type="pie-chart" />
+              <span>Top</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="10">
