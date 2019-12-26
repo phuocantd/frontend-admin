@@ -7,6 +7,7 @@ import specialization from './specializations';
 import contracts from './contracts';
 import complaints from './complaints';
 import statistics from './statistics';
+import tops from './top';
 
 const reducers = combineReducers({
   admins,
@@ -18,7 +19,8 @@ const reducers = combineReducers({
   specialization,
   contracts,
   complaints,
-  statistics
+  statistics,
+  tops
 });
 
 export default reducers;
