@@ -83,12 +83,8 @@ function Complaints({ data, token, dispatch }) {
           value: 'Completed'
         },
         {
-          text: 'Requesting',
-          value: 'Requesting'
-        },
-        {
-          text: 'Happening',
-          value: 'Happening'
+          text: 'Processing',
+          value: 'Processing'
         }
       ],
       onFilter: (value, record) => record.status.indexOf(value) === 0,
@@ -101,11 +97,8 @@ function Complaints({ data, token, dispatch }) {
         >
           <Option value="Completed">Completed</Option>
           <Option value="Canceled">Canceled</Option>
-          <Option value="Requesting" disabled>
-            Requesting
-          </Option>
-          <Option value="Complaining" disabled>
-            Complaining
+          <Option value="Processing" disabled>
+            Processing
           </Option>
         </Select>
       )

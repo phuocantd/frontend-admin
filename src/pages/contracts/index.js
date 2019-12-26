@@ -99,6 +99,10 @@ function ContractPage({ token, dispatch, data }) {
         {
           text: 'Happening',
           value: 'Happening'
+        },
+        {
+          text: 'Complaint',
+          value: 'Complaint'
         }
       ],
       onFilter: (value, record) => record.status.indexOf(value) === 0,
@@ -114,6 +118,9 @@ function ContractPage({ token, dispatch, data }) {
         >
           <Option value="Completed">Completed</Option>
           <Option value="Canceled">Canceled</Option>
+          <Option value="Happening" disabled>
+            Happening
+          </Option>
           <Option value="Requesting" disabled>
             Requesting
           </Option>
