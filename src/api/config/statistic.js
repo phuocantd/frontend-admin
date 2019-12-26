@@ -5,3 +5,5 @@ export const getStatisticByPeriodURL = period =>
 
 export const getStatisticByDMYURL = (period, month, year) =>
   `${DOMAIN}/statistics?period=${period}&month=${month}&year=${year}`;
+
+export const getDashBoardURL = () => `${DOMAIN}/statistics/dashboard`;
