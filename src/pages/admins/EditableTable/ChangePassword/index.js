@@ -30,9 +30,6 @@ class CollectionsPage extends React.Component {
       if (error) {
         return;
       }
-      // const { dispatch } = this.props;
-      // dispatch(addAdmin(count, 'admin', values.email, values.name));
-      // const token = localStorage.getItem('access-token');
       const { token } = this.props;
       changePasswordAdministrator(idAdmin, values.password, token)
         .then(() => {

@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux';
-import { isAuthenticate, tokenReducer, nameAccountReducer } from './auth';
+import {
+  isAuthenticate,
+  tokenReducer,
+  nameAccountReducer,
+  roleAccountReducer
+} from './auth';
 import admins from './admins';
 import users from './users';
 import tag from './tag';
@@ -14,6 +19,7 @@ const reducers = combineReducers({
   isAuthenticate,
   nameAccountReducer,
   tokenReducer,
+  roleAccountReducer,
   users,
   tag,
   specialization,

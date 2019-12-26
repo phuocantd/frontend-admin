@@ -1,4 +1,9 @@
-import { CHANGE_IS_LOGIN, CHANGE_TOKEN, CHANGE_NAME } from '../const/auth';
+import {
+  CHANGE_IS_LOGIN,
+  CHANGE_TOKEN,
+  CHANGE_NAME,
+  CHANGE_ROLE
+} from '../const/auth';
 
 const changeIsLogin = value => {
   return { type: CHANGE_IS_LOGIN, value };
@@ -12,4 +17,8 @@ const changeNameAccount = name => {
   return { type: CHANGE_NAME, name };
 };
 
-export { changeIsLogin, changeToken, changeNameAccount };
+const changeRoleAccount = role => {
+  return { type: CHANGE_ROLE, role };
+};
+
+export { changeIsLogin, changeToken, changeNameAccount, changeRoleAccount };

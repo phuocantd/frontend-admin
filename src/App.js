@@ -8,7 +8,12 @@ import LoginPage from './pages/login';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import { auth } from './api/services/auth';
-import { changeIsLogin, changeToken, changeNameAccount } from './actions/auth';
+import {
+  changeIsLogin,
+  changeToken,
+  changeNameAccount,
+  changeRoleAccount
+} from './actions/auth';
 
 function App({ dispatch }) {
   useEffect(() => {
@@ -20,6 +25,7 @@ function App({ dispatch }) {
           dispatch(changeIsLogin(true));
           dispatch(changeToken(token));
           dispatch(changeNameAccount(res.data.name));
+          dispatch(changeRoleAccount(res.data.role));
         })
         .catch(() => {
           dispatch(changeIsLogin(false));

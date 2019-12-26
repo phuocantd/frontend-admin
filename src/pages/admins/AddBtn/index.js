@@ -31,9 +31,6 @@ class CollectionsPage extends React.Component {
       if (error) {
         return;
       }
-      // const { dispatch } = this.props;
-      // dispatch(addAdmin(count, 'admin', values.email, values.name));
-      // const token = localStorage.getItem('access-token');
       createAdministrators(values.email, values.password, values.name, token)
         .then(res => {
           message.success('Tạo tài khoản thành công');

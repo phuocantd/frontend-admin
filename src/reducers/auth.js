@@ -1,4 +1,9 @@
-import { CHANGE_IS_LOGIN, CHANGE_TOKEN, CHANGE_NAME } from '../const/auth';
+import {
+  CHANGE_IS_LOGIN,
+  CHANGE_TOKEN,
+  CHANGE_NAME,
+  CHANGE_ROLE
+} from '../const/auth';
 
 const isAuthenticate = (state = false, action) => {
   switch (action.type) {
@@ -27,4 +32,13 @@ const nameAccountReducer = (state = '', action) => {
   }
 };
 
-export { isAuthenticate, tokenReducer, nameAccountReducer };
+const roleAccountReducer = (state = '', action) => {
+  switch (action.type) {
+    case CHANGE_ROLE:
+      return action.role;
+    default:
+      return state;
+  }
+};
+
+export { isAuthenticate, tokenReducer, nameAccountReducer, roleAccountReducer };
